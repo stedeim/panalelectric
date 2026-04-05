@@ -10,6 +10,9 @@ const TOOLS = [
   { id: 'residential-proposal', name: 'Residential Proposal Template', desc: 'Win more jobs with professional quotes', icon: '📋', tier: 't1' },
   { id: 'change-order-form', name: 'Change Order Form', desc: 'Protect yourself when scopes change', icon: '🔄', tier: 't1' },
   { id: 'client-comms', name: 'Client Communication Templates', desc: 'Professional emails and texts', icon: '💬', tier: 't1' },
+  { id: 'job-tracker', name: 'Job Tracker CRM', desc: 'Visual pipeline — Lead to Close', icon: '📋', tier: 't2', route: '/job-tracker' },
+  { id: 'proposal-builder', name: 'Proposal Builder', desc: 'Create & send professional proposals', icon: '📝', tier: 't2', route: '/proposal-builder' },
+  { id: 'contract-builder', name: 'Contract Builder', desc: 'Generate service agreements instantly', icon: '📜', tier: 't2', route: '/contract-builder' },
   { id: 'commercial-estimating', name: 'Commercial Estimating Spreadsheet', desc: 'Bid commercial jobs with confidence', icon: '🏗️', tier: 't2' },
   { id: 'ev-charger', name: 'EV Charger Pricing Calculator', desc: 'Quote EV charger installs accurately', icon: '🔌', tier: 't2' },
   { id: 'hiring-cost', name: 'Hiring Cost Calculator', desc: 'Know what employees really cost', icon: '👷', tier: 't2' },
@@ -127,7 +130,12 @@ export default function DashboardPage() {
               </div>
               <h3 className="font-bold text-slate-900 mb-1 text-sm">{tool.name}</h3>
               <p className="text-slate-500 text-xs mb-4">{tool.desc}</p>
-              {CALC_IDS.includes(tool.id) ? (
+              {(tool as any).route ? (
+                <Link to={(tool as any).route}
+                  className="block text-center bg-amber-400 text-slate-900 font-bold py-2 rounded-xl hover:bg-amber-300 transition-colors text-xs">
+                  Open Tool →
+                </Link>
+              ) : CALC_IDS.includes(tool.id) ? (
                 <Link to={`/calculator/${tool.id}`}
                   className="block text-center bg-amber-400 text-slate-900 font-bold py-2 rounded-xl hover:bg-amber-300 transition-colors text-xs">
                   Open Calculator →

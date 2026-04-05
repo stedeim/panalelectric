@@ -8,6 +8,9 @@ import DocumentsPage from './pages/DocumentsPage';
 import GeoAuditPage from './pages/GeoAuditPage';
 import WattChatPage from './pages/WattChatPage';
 import UpgradePage from './pages/UpgradePage';
+import JobTrackerPage from './pages/JobTrackerPage';
+import ProposalBuilderPage from './pages/ProposalBuilderPage';
+import ContractBuilderPage from './pages/ContractBuilderPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App() {
@@ -44,6 +47,21 @@ export default function App() {
           <Route path="/upgrade" element={
             <ProtectedRoute>
               <UpgradePage />
+            </ProtectedRoute>
+          } />
+          <Route path="/job-tracker" element={
+            <ProtectedRoute>
+              <JobTrackerPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/proposal-builder" element={
+            <ProtectedRoute>
+              <ProposalBuilderPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/contract-builder" element={
+            <ProtectedRoute>
+              <ContractBuilderPage />
             </ProtectedRoute>
           } />
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
