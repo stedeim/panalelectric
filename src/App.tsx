@@ -11,6 +11,11 @@ import UpgradePage from './pages/UpgradePage';
 import JobTrackerPage from './pages/JobTrackerPage';
 import ProposalBuilderPage from './pages/ProposalBuilderPage';
 import ContractBuilderPage from './pages/ContractBuilderPage';
+import LeadGenMachinePage from './pages/LeadGenMachinePage';
+import ReputationSystemPage from './pages/ReputationSystemPage';
+import SocialMediaKitPage from './pages/SocialMediaKitPage';
+import EmailMarketingPage from './pages/EmailMarketingPage';
+import ReferralPartnerPage from './pages/ReferralPartnerPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App() {
@@ -62,6 +67,31 @@ export default function App() {
           <Route path="/contract-builder" element={
             <ProtectedRoute>
               <ContractBuilderPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/lead-generation" element={
+            <ProtectedRoute>
+              <LeadGenMachinePage />
+            </ProtectedRoute>
+          } />
+          <Route path="/reputation-system" element={
+            <ProtectedRoute>
+              <ReputationSystemPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/social-media-kit" element={
+            <ProtectedRoute>
+              <SocialMediaKitPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/email-marketing" element={
+            <ProtectedRoute>
+              <EmailMarketingPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/referral-partner" element={
+            <ProtectedRoute>
+              <ReferralPartnerPage />
             </ProtectedRoute>
           } />
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
