@@ -44,9 +44,8 @@ export default function LoginPage() {
     <div className="min-h-screen bg-slate-900 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="text-5xl mb-2">⚡</div>
-          <h1 className="text-3xl font-black text-white">Electrician<span className="text-amber-400">Pro</span></h1>
-          <p className="text-slate-400 mt-1">Members Portal</p>
+          <img src="/logos/logo-E-white.png" alt="PanelElectric" className="h-16 w-auto object-contain mx-auto mb-4" />
+          <p className="text-slate-400 text-sm">Members Portal</p>
         </div>
         <div className="bg-white rounded-2xl p-8 shadow-2xl">
           <h2 className="text-xl font-black text-slate-900 mb-6 text-center">

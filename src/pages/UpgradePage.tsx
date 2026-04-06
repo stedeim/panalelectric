@@ -142,7 +142,7 @@ export default function UpgradePage() {
     <div className="min-h-screen bg-gray-50">
       <header className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-black">⚡ Electrician<span className="text-amber-400">Pro</span></h1>
+          <img src="/logos/logo-E-darkonlight.png" alt="PanelElectric" className="h-10 w-auto object-contain" />
           <p className="text-slate-400 text-sm">Upgrade your plan</p>
         </div>
         <Link to="/dashboard" className="text-slate-400 hover:text-white text-sm">← Back to Dashboard</Link>
