@@ -1,88 +1,151 @@
-import { User } from 'firebase/auth';
-
-export type Tier = 'none' | 't1' | 't2' | 't3' | 'dfy';
+export type Tier = 'none' | 'starter' | 'pro' | 'business' | 'growth' | 'dfy';
 
 export interface SubscriptionData {
   tier: Tier;
   status: 'active' | 'cancelled' | 'past_due' | 'none';
-  currentPeriodEnd?: number; // Unix timestamp
+  currentPeriodEnd?: number;
   planName?: string;
 }
 
 export const TIER_LABELS: Record<Tier, string> = {
   none: 'No Subscription',
-  t1: 'Foundation — $97/mo',
-  t2: 'Business — $297/mo',
-  t3: 'Growth — $497/mo',
-  dfy: 'Done-For-You GEO — $1,000/mo',
+  starter: 'Starter — $47/mo',
+  pro: 'Pro — $97/mo',
+  business: 'Business — $197/mo',
+  growth: 'Growth — $297/mo',
+  dfy: 'Done-For-You — $1,000/mo',
 };
 
 export const TIER_COLORS: Record<Tier, string> = {
   none: 'bg-gray-400',
-  t1: 'bg-blue-500',
-  t2: 'bg-slate-700',
-  t3: 'bg-amber-400 text-slate-900',
+  starter: 'bg-gray-500',
+  pro: 'bg-blue-600',
+  business: 'bg-slate-700',
+  growth: 'bg-amber-400 text-slate-900',
   dfy: 'bg-green-600',
 };
 
-// Which tools each tier can access
+// Tool IDs
+export const TOOLS: Record<string, string> = {
+  // CALCULATORS
+  'residential-pricing': 'Residential Flat-Rate Pricing Guide',
+  'overhead-calculator': 'Overhead & Hourly Rate Calculator',
+  'job-costing': 'Job Costing Tracker',
+  'ev-charger': 'EV Charger Pricing Calculator',
+  'hiring-cost': 'Hiring Cost Calculator',
+  // BUSINESS TOOLS
+  'invoice-generator': 'Invoice Generator',
+  'expense-tracker': 'Expense Tracker',
+  'material-price-list': 'Material Price List',
+  'job-scheduler': 'Job Scheduling Calendar',
+  'service-agreement': 'Service Agreement Templates',
+  'license-tracker': 'License & Permit Tracker',
+  // PROPOSALS & CONTRACTS
+  'proposal-builder': 'Proposal Builder',
+  'contract-builder': 'Contract Builder',
+  'change-order': 'Change Order Form',
+  // CRM & MARKETING
+  'job-tracker': 'Job Tracker CRM',
+  'lead-generation': 'Lead Generation Machine',
+  'reputation-system': 'Reputation Management System',
+  'social-media-kit': 'Social Media Kit',
+  'email-marketing': 'Email Marketing Templates',
+  'referral-partner': 'Referral & Partner Program',
+  // DOCUMENTS & AI
+  'documents-library': 'Documents Library',
+  'nec-quick-ref': 'NEC 2023 Quick Reference',
+  'geo-audit': 'GEO Audit Quiz',
+  'watt-chat': 'Ask Watt (AI Assistant)',
+  'google-ads-playbook': 'Google Ads Playbook',
+};
+
 export const TIER_TOOLS: Record<Tier, string[]> = {
   none: [],
-  t1: [
-    'residential-pricing-guide',
+  starter: [
+    'residential-pricing',
     'overhead-calculator',
-    'job-costing-tracker',
-    'residential-proposal',
-    'change-order-form',
-    'client-comms',
+    'job-costing',
   ],
-  t2: [
-    'residential-pricing-guide',
+  pro: [
+    'residential-pricing',
     'overhead-calculator',
-    'job-costing-tracker',
-    'residential-proposal',
-    'change-order-form',
-    'client-comms',
-    'commercial-estimating',
-    'ev-charger-calculator',
-    'hiring-cost-calculator',
-    'commercial-bid-proposal',
-    'electrical-service-agreement',
-    'commercial-maintenance-agreement',
-    'subcontractor-agreement',
-    'nec-2023-summary',
-    'google-local-seo',
-    'hiring-onboarding-kit',
+    'job-costing',
+    'ev-charger',
+    'hiring-cost',
+    'invoice-generator',
+    'expense-tracker',
+    'proposal-builder',
+    'contract-builder',
+    'change-order',
+    'documents-library',
+    'watt-chat',
   ],
-  t3: [
-    'all-t2-tools',
-    'lead-generation-machine',
-    'client-crm',
+  business: [
+    'residential-pricing',
+    'overhead-calculator',
+    'job-costing',
+    'ev-charger',
+    'hiring-cost',
+    'invoice-generator',
+    'expense-tracker',
+    'material-price-list',
+    'job-scheduler',
+    'proposal-builder',
+    'contract-builder',
+    'change-order',
+    'service-agreement',
+    'job-tracker',
+    'lead-generation',
+    'reputation-system',
+    'documents-library',
+    'watt-chat',
+    'geo-audit',
+  ],
+  growth: [
+    'residential-pricing',
+    'overhead-calculator',
+    'job-costing',
+    'ev-charger',
+    'hiring-cost',
+    'invoice-generator',
+    'expense-tracker',
+    'material-price-list',
+    'job-scheduler',
+    'proposal-builder',
+    'contract-builder',
+    'change-order',
+    'service-agreement',
+    'license-tracker',
+    'nec-quick-ref',
+    'job-tracker',
+    'lead-generation',
     'reputation-system',
     'social-media-kit',
-    'email-marketing-templates',
+    'email-marketing',
+    'referral-partner',
     'google-ads-playbook',
-    'referral-marketing',
-    'partner-program',
-    'geo-audit-report',
-    'ai-marketing-assistant',
+    'documents-library',
+    'watt-chat',
+    'geo-audit',
   ],
-  dfy: ['all-t3-tools', 'dfy-geo-management'],
+  dfy: Object.keys(TOOLS),
+};
+
+export const LS_TIER_MAP: Record<string, Tier> = {
+  'tier-47': 'starter',
+  'tier-97': 'pro',
+  'tier-197': 'business',
+  'tier-297': 'growth',
+  'tier-1000': 'dfy',
 };
 
 export const TIER_CALCULATORS: Record<Tier, string[]> = {
   none: [],
-  t1: ['residential-pricing', 'overhead', 'job-costing'],
-  t2: ['residential-pricing', 'overhead', 'job-costing', 'ev-charger', 'hiring-cost'],
-  t3: ['residential-pricing', 'overhead', 'job-costing', 'ev-charger', 'hiring-cost'],
-  dfy: ['residential-pricing', 'overhead', 'job-costing', 'ev-charger', 'hiring-cost'],
+  starter: ['residential-pricing', 'overhead-calculator', 'job-costing'],
+  pro: ['residential-pricing', 'overhead-calculator', 'job-costing', 'ev-charger', 'hiring-cost'],
+  business: ['residential-pricing', 'overhead-calculator', 'job-costing', 'ev-charger', 'hiring-cost'],
+  growth: ['residential-pricing', 'overhead-calculator', 'job-costing', 'ev-charger', 'hiring-cost'],
+  dfy: ['residential-pricing', 'overhead-calculator', 'job-costing', 'ev-charger', 'hiring-cost'],
 };
 
-// LS product IDs mapped to tiers
-export const LS_TIER_MAP: Record<string, Tier> = {
-  // Replace with actual LS product IDs once created
-  'tier-97': 't1',
-  'tier-297': 't2',
-  'tier-497': 't3',
-  'tier-1000': 'dfy',
-};
+export const TIER_ORDER: Tier[] = ['starter', 'pro', 'business', 'growth', 'dfy'];

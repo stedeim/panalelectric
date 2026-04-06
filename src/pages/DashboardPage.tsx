@@ -4,45 +4,46 @@ import { useAuth } from '../contexts/AuthContext';
 import { TIER_LABELS, TIER_COLORS } from '../lib/tiers';
 
 const TOOLS = [
-  { id: 'residential-pricing', name: 'Residential Flat-Rate Pricing Guide', desc: 'Price 60 common jobs correctly', icon: '💰', tier: 't1' },
-  { id: 'overhead', name: 'Overhead & Hourly Rate Calculator', desc: 'Know exactly what to charge per hour', icon: '⚡', tier: 't1' },
-  { id: 'job-costing', name: 'Job Costing Tracker', desc: 'Track every job\'s real profit', icon: '📊', tier: 't1' },
-  { id: 'residential-proposal', name: 'Residential Proposal Template', desc: 'Win more jobs with professional quotes', icon: '📋', tier: 't1' },
-  { id: 'change-order-form', name: 'Change Order Form', desc: 'Protect yourself when scopes change', icon: '🔄', tier: 't1' },
-  { id: 'client-comms', name: 'Client Communication Templates', desc: 'Professional emails and texts', icon: '💬', tier: 't1' },
-  { id: 'job-tracker', name: 'Job Tracker CRM', desc: 'Visual pipeline — Lead to Close', icon: '📋', tier: 't2', route: '/job-tracker' },
-  { id: 'proposal-builder', name: 'Proposal Builder', desc: 'Create & send professional proposals', icon: '📝', tier: 't2', route: '/proposal-builder' },
-  { id: 'contract-builder', name: 'Contract Builder', desc: 'Generate service agreements instantly', icon: '📜', tier: 't2', route: '/contract-builder' },
-  { id: 'commercial-estimating', name: 'Commercial Estimating Spreadsheet', desc: 'Bid commercial jobs with confidence', icon: '🏗️', tier: 't2' },
-  { id: 'ev-charger', name: 'EV Charger Pricing Calculator', desc: 'Quote EV charger installs accurately', icon: '🔌', tier: 't2' },
-  { id: 'hiring-cost', name: 'Hiring Cost Calculator', desc: 'Know what employees really cost', icon: '👷', tier: 't2' },
-  { id: 'commercial-bid', name: 'Commercial Bid Proposal', desc: 'Professional bids for bigger jobs', icon: '📁', tier: 't2' },
-  { id: 'service-agreement', name: 'Master Electrical Service Agreement', desc: 'Protect your business on every job', icon: '📜', tier: 't2' },
-  { id: 'maintenance-agreement', name: 'Commercial Maintenance Agreement', desc: 'Recurring revenue template', icon: '🔧', tier: 't2' },
-  { id: 'subcontractor-agreement', name: 'Subcontractor Agreement', desc: 'Clean contracts for your subs', icon: '🤝', tier: 't2' },
-  { id: 'nec-2023', name: 'NEC 2023 Update Summary', desc: 'Stay code-compliant', icon: '📖', tier: 't2' },
-  { id: 'google-local-seo', name: 'Google Local SEO Guide', desc: 'Get found on Google Maps', icon: '🔍', tier: 't2' },
-  { id: 'hiring-onboarding', name: 'Hiring & Onboarding Kit', desc: 'Hire and train people properly', icon: '🧑‍🔧', tier: 't2' },
-  { id: 'lead-generation', name: 'Lead Generation Machine', desc: 'Systematic lead flow every month', icon: '🚀', tier: 't3', route: '/lead-generation' },
-  { id: 'client-crm', name: 'Client CRM', desc: 'Track every lead to signed contract', icon: '💼', tier: 't3' },
-  { id: 'reputation-system', name: 'Reputation Management System', desc: '5-star reviews on autopilot', icon: '⭐', tier: 't3', route: '/reputation-system' },
-  { id: 'social-media-kit', name: 'Social Media Kit', desc: '30 ready-to-post captions monthly', icon: '📱', tier: 't3', route: '/social-media-kit' },
-  { id: 'email-marketing', name: 'Email Marketing Templates', desc: 'Newsletters, re-engagement, referral', icon: '📧', tier: 't3', route: '/email-marketing' },
-  { id: 'google-ads-playbook', name: 'Google Ads Playbook', desc: '$500/mo campaign that converts', icon: '🎯', tier: 't3' },
-  { id: 'referral-marketing', name: 'Referral Marketing System', desc: 'Scripts and templates that get referrals', icon: '🎁', tier: 't3', route: '/referral-partner' },
-  { id: 'partner-program', name: 'Partner Program Playbook', desc: 'Get referred by builders and Realtors', icon: '🏗️', tier: 't3', route: '/referral-partner' },
-  { id: 'geo-audit', name: 'Quarterly GEO Audit Report', desc: 'Your actionable AI search report', icon: '🌐', tier: 't3' },
-  { id: 'ai-marketing', name: 'AI Marketing Assistant', desc: 'AI writes your posts and emails', icon: '🤖', tier: 't3' },
+  // CALCULATORS (tier: 'starter')
+  { id: 'residential-pricing', name: 'Residential Flat-Rate Pricing Guide', desc: 'Price 60 common jobs correctly', icon: '💰', tier: 'starter' },
+  { id: 'overhead-calculator', name: 'Overhead & Hourly Rate Calculator', desc: 'Know exactly what to charge per hour', icon: '⚡', tier: 'starter' },
+  { id: 'job-costing', name: 'Job Costing Tracker', desc: 'Track every job\'s real profit', icon: '📊', tier: 'starter' },
+  // PRO TIER
+  { id: 'ev-charger', name: 'EV Charger Pricing Calculator', desc: 'Quote EV charger installs accurately', icon: '🔌', tier: 'pro' },
+  { id: 'hiring-cost', name: 'Hiring Cost Calculator', desc: 'Know what employees really cost', icon: '👷', tier: 'pro' },
+  { id: 'invoice-generator', name: 'Invoice Generator', desc: 'Create professional invoices instantly', icon: '📄', tier: 'pro', route: '/invoice-generator' },
+  { id: 'expense-tracker', name: 'Expense Tracker', desc: 'Track expenses & estimate tax savings', icon: '💸', tier: 'pro', route: '/expense-tracker' },
+  { id: 'proposal-builder', name: 'Proposal Builder', desc: 'Create & send professional proposals', icon: '📝', tier: 'pro', route: '/proposal-builder' },
+  { id: 'contract-builder', name: 'Contract Builder', desc: 'Generate service agreements instantly', icon: '📜', tier: 'pro', route: '/contract-builder' },
+  { id: 'documents-library', name: 'Documents Library', desc: '17 guides, templates & checklists', icon: '📁', tier: 'pro' },
+  // BUSINESS TIER
+  { id: 'material-price-list', name: 'Material Price List', desc: 'Standard material costs with estimate calculator', icon: '📦', tier: 'business', route: '/material-price-list' },
+  { id: 'job-scheduler', name: 'Job Scheduling Calendar', desc: 'Weekly calendar to schedule your jobs', icon: '📅', tier: 'business', route: '/job-scheduler' },
+  { id: 'service-agreement', name: 'Service Agreement Templates', desc: 'Annual maintenance & service contracts', icon: '📜', tier: 'business', route: '/service-agreements' },
+  { id: 'job-tracker', name: 'Job Tracker CRM', desc: 'Visual pipeline — Lead to Close', icon: '📋', tier: 'business', route: '/job-tracker' },
+  { id: 'lead-generation', name: 'Lead Generation Machine', desc: 'Systematic lead flow every month', icon: '🚀', tier: 'business', route: '/lead-generation' },
+  { id: 'reputation-system', name: 'Reputation Management System', desc: '5-star reviews on autopilot', icon: '⭐', tier: 'business', route: '/reputation-system' },
+  // GROWTH TIER
+  { id: 'license-tracker', name: 'License & Permit Tracker', desc: 'Track expiry dates, never miss a renewal', icon: '📋', tier: 'growth', route: '/license-tracker' },
+  { id: 'nec-quick-ref', name: 'NEC 2023 Quick Reference', desc: 'Code reference guide for electricians', icon: '📖', tier: 'growth' },
+  { id: 'social-media-kit', name: 'Social Media Kit', desc: '30 ready-to-post captions monthly', icon: '📱', tier: 'growth', route: '/social-media-kit' },
+  { id: 'email-marketing', name: 'Email Marketing Templates', desc: 'Newsletters, re-engagement, referral', icon: '📧', tier: 'growth', route: '/email-marketing' },
+  { id: 'referral-partner', name: 'Referral & Partner Program', desc: 'Scripts and templates that get referrals', icon: '🎁', tier: 'growth', route: '/referral-partner' },
+  { id: 'google-ads-playbook', name: 'Google Ads Playbook', desc: '$500/mo campaign that converts', icon: '🎯', tier: 'growth' },
+  { id: 'geo-audit', name: 'GEO Audit Quiz', desc: 'Your actionable AI search report', icon: '🌐', tier: 'business' },
 ];
 
-const CALC_IDS = ['residential-pricing', 'overhead', 'job-costing', 'ev-charger', 'hiring-cost'];
-const TIER_ORDER = ['t1', 't2', 't3'];
+const CALC_IDS = ['residential-pricing', 'overhead-calculator', 'job-costing', 'ev-charger', 'hiring-cost'];
+const TIER_ORDER = ['starter', 'pro', 'business', 'growth'];
 
 function TierBadge({ tier }: { tier: string }) {
-  const labels: Record<string, string> = { t1: 'Foundation', t2: 'Business', t3: 'Growth', dfy: 'DFY GEO' };
+  const labels: Record<string, string> = { starter: 'Starter', pro: 'Pro', business: 'Business', growth: 'Growth', dfy: 'DFY' };
   const colors: Record<string, string> = {
-    t1: 'bg-blue-100 text-blue-700', t2: 'bg-slate-100 text-slate-700',
-    t3: 'bg-amber-100 text-amber-700', dfy: 'bg-green-100 text-green-700',
+    starter: 'bg-gray-100 text-gray-600',
+    pro: 'bg-blue-100 text-blue-700',
+    business: 'bg-slate-100 text-slate-700',
+    growth: 'bg-amber-100 text-amber-700',
+    dfy: 'bg-green-100 text-green-700',
   };
   return <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${colors[tier] || 'bg-gray-100'}`}>{labels[tier] || tier}</span>;
 }
@@ -51,7 +52,7 @@ export default function DashboardPage() {
   const { user, subscription, logOut } = useAuth();
   const [tab, setTab] = useState<'all' | 'calculators'>('all');
 
-  const maxTier = subscription.tier === 'dfy' ? 't3' : subscription.tier;
+  const maxTier = subscription.tier === 'dfy' ? 'growth' : subscription.tier;
   const maxIdx = TIER_ORDER.indexOf(maxTier as string);
 
   const visible = TOOLS.filter(t => {
@@ -111,7 +112,7 @@ export default function DashboardPage() {
 
       <div className="max-w-6xl mx-auto px-6 mb-6">
         <div className="flex gap-2">
-          {[['all', `All Tools (${visible.length})`], ['calculators', `Calculators (${calcTools.length})`]].map(([key, label]) => (
+          {([['all', `All Tools (${visible.length})`], ['calculators', `Calculators (${calcTools.length})`]] as [string, string][]).map(([key, label]) => (
             <button key={key} onClick={() => setTab(key as any)}
               className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${tab === key ? 'bg-slate-900 text-white' : 'bg-white text-slate-600 border border-gray-200 hover:bg-slate-50'}`}>
               {label}
@@ -148,12 +149,12 @@ export default function DashboardPage() {
             </div>
           ))}
 
-          {subscription.tier !== 't3' && subscription.tier !== 'dfy' && lockedCount > 0 && (
+          {subscription.tier !== 'growth' && subscription.tier !== 'dfy' && lockedCount > 0 && (
             <Link to="/upgrade"
               className="bg-gradient-to-br from-amber-50 to-white rounded-xl border-2 border-amber-200 p-5 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow">
               <div className="text-3xl mb-2">🚀</div>
               <h3 className="font-bold text-slate-900 mb-1 text-sm">Unlock {lockedCount} More Tools</h3>
-              <p className="text-slate-500 text-xs mb-3">Upgrade to Growth tier for all tools + marketing</p>
+              <p className="text-slate-500 text-xs mb-3">Upgrade to unlock all tools</p>
               <span className="bg-amber-400 text-slate-900 font-bold px-4 py-2 rounded-xl text-xs">View Upgrade →</span>
             </Link>
           )}

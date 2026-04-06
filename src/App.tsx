@@ -16,6 +16,12 @@ import ReputationSystemPage from './pages/ReputationSystemPage';
 import SocialMediaKitPage from './pages/SocialMediaKitPage';
 import EmailMarketingPage from './pages/EmailMarketingPage';
 import ReferralPartnerPage from './pages/ReferralPartnerPage';
+import InvoiceGeneratorPage from './pages/InvoiceGeneratorPage';
+import ExpenseTrackerPage from './pages/ExpenseTrackerPage';
+import MaterialPriceListPage from './pages/MaterialPriceListPage';
+import JobSchedulerPage from './pages/JobSchedulerPage';
+import ServiceAgreementPage from './pages/ServiceAgreementPage';
+import LicenseTrackerPage from './pages/LicenseTrackerPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App() {
@@ -92,6 +98,36 @@ export default function App() {
           <Route path="/referral-partner" element={
             <ProtectedRoute>
               <ReferralPartnerPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/invoice-generator" element={
+            <ProtectedRoute>
+              <InvoiceGeneratorPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/expense-tracker" element={
+            <ProtectedRoute>
+              <ExpenseTrackerPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/material-price-list" element={
+            <ProtectedRoute>
+              <MaterialPriceListPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/job-scheduler" element={
+            <ProtectedRoute>
+              <JobSchedulerPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/service-agreements" element={
+            <ProtectedRoute>
+              <ServiceAgreementPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/license-tracker" element={
+            <ProtectedRoute>
+              <LicenseTrackerPage />
             </ProtectedRoute>
           } />
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
