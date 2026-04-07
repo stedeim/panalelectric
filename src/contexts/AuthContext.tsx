@@ -9,6 +9,7 @@ import {
 } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
+import { subscribeToKit } from '../lib/kit';
 import type { SubscriptionData } from '../lib/tiers';
 
 interface AuthContextType {
@@ -82,6 +83,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       status: 'none',
       createdAt: Date.now(),
     });
+    // Subscribe to Kit welcome sequence
+    const firstName = email.split('@')[0].replace(/[._]/g, ' ').trim();
+    await subscribeToKit(email, firstName || 'Member', ['new-member', 'email-sequence']);
   }
 
   async function logOut() {
