@@ -83,9 +83,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       status: 'none',
       createdAt: Date.now(),
     });
-    // Subscribe to Kit welcome sequence
+    // Subscribe to Kit welcome sequence — default tier is 'starter'
     const firstName = email.split('@')[0].replace(/[._]/g, ' ').trim();
-    await subscribeToKit(email, firstName || 'Member', ['new-member', 'email-sequence']);
+    await subscribeToKit(email, firstName || 'Member', 'starter');
   }
 
   async function logOut() {
